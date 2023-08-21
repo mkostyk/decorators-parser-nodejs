@@ -6,7 +6,7 @@
 ### Installation guide
 1. Install NodeJS 18 or newer from [https://nodejs.org/en/download](https://nodejs.org/en/download)
 2. Add NodeJS to PATH - [example guide](https://www.tutorialspoint.com/nodejs/nodejs_environment_setup.htm)
-3. Run `npm install decorator-parser` in your command line
+3. Run `npm install "decorator-parser-js"` in your command line
 
 
 ### API
@@ -66,7 +66,7 @@ What is the purpose of the Bill of Rights?
 
 run.py:
 ```js
-import { Parser } from decorator-parser
+import { Parser } from "decorator-parser-js"
 let task_parser = new Parser()
 console.log(task_parser.parse('task.txt'))
 ```
@@ -100,7 +100,7 @@ What is the purpose of the Bill of Rights?
 
 run.py:
 ```js
-import { Parser } from decorator-parser
+import { Parser } from "decorator-parser-js"
 let task_parser = new Parser()
 console.log(task_parser.parse('task.txt'))
 ```
@@ -149,7 +149,7 @@ task.txt:
 
 run.py:
 ```js
-import { Parser } from decorator-parser
+import { Parser } from "decorator-parser-js"
 let task_parser = new Parser(example)
 console.log(task_parser.parse('task.txt'))
 ```
@@ -188,7 +188,7 @@ Some long question with @ref in it
 
 run.py:
 ```js
-import { Parser } from decorator-parser
+import { Parser } from "decorator-parser-js"
 let task_parser = new Parser({}, ["ref"])
 console.log(task_parser.parse('task.txt'))
 ```
