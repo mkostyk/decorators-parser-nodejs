@@ -43,7 +43,7 @@ Some very long and complicated value that would be hard to read if it were in pa
 ```
 
 All of these create Javascript dictionary like this:
-```python
+```js
 {
     'decorator': 'value'
 }
@@ -51,7 +51,7 @@ All of these create Javascript dictionary like this:
 
 ### @new decorator
 
-Using @new decorator starts a new dictionary and adds it to the current list of dictionaries. In a single piece of text between two @new decorators (which correspond to a single Python dictionary) there can not be two decorators with the same name. Using a same name without an appropriate @new decorator will result in `DuplicateDecoratorException` being thrown.
+Using @new decorator starts a new dictionary and adds it to the current list of dictionaries. In a single piece of text between two @new decorators (which correspond to a single JavaScript dictionary) there can not be two decorators with the same name. Using a same name without an appropriate @new decorator will result in `DuplicateDecoratorException` being thrown.
 
 #### Example:
 task.txt:
@@ -123,7 +123,7 @@ result:
 
 Decorators can use constraints on their values. If a decorator has value that does not match regular expression
 provided, Parser will throw `InvalidValueException`. Parser class takes optional `constraints` argument in its constructor which
-is a Python dictionary in a format shown below (if format of the given dictionary is invalid, `InvalidConstraintException` will be thrown):
+is a JavaScript dictionary in a format shown below (if format of the given dictionary is invalid, `InvalidConstraintException` will be thrown):
 ```js
 let example = {
     'question': 
