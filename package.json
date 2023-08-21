@@ -1,8 +1,8 @@
 {
-  "name": "decorators-parser",
-  "version": "0.0.1",
+  "name": "decorators-parser-js",
+  "version": "0.0.2",
   "description": "",
-  "main": "index.js",
+  "main": "./src/parse.mjs",
   "type": "module",
   "directories": {
     "test": "__tests__"
@@ -13,9 +13,9 @@
   "jest": {
     "collectCoverage":true
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["decorators", "parser", "js"],
+  "author": "Michał Kostyk",
+  "license": "All rights reserved",
   "devDependencies": {
     "jest": "^29.6.2",
     "pretty-format": "^29.6.2"
