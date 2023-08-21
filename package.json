@@ -1,6 +1,6 @@
 {
-  "name": "decorators-parser-nodejs",
-  "version": "1.0.0",
+  "name": "decorators-parser",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "type": "module",

@@ -2,7 +2,7 @@
 // Date: 2023
 // Version: 1.2.0
 
-import { readFileSync } from 'fs'
+import { readFileSync, existsSync } from 'fs'
 import { DecoratorNotFoundException } from "./errors.mjs"
 
 const MAGIC_CHAR = '\x07'
@@ -167,8 +167,18 @@ export class Parser {
     }
 
 
-    parse(file) {
-        let data = readFileSync(file, 'utf8')
+    parse(file, data) {
+        if (file == undefined && data == undefined) {
+            throw new Error('Either file or data must be provided')
+        }
+
+        if (file != undefined) {
+            if (!existsSync(file)) {
+                throw new Error(`File '${file}' does not exist`)
+            }
+
+            data = readFileSync(file, 'utf8')
+        }
         let global_dec = {}
 
         // Save original data for error line messages
