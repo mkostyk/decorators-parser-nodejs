@@ -1,6 +1,6 @@
 {
   "name": "decorators-parser-js",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "main": "./src/parse.mjs",
   "type": "module",
@@ -19,5 +19,9 @@
   "devDependencies": {
     "jest": "^29.6.2",
     "pretty-format": "^29.6.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mkostyk/decorators-parser-nodejs.git"
   }
 }

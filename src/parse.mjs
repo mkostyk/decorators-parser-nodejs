@@ -1,6 +1,6 @@
 // Author: Michał Kostyk for Smartschool Inc.
 // Date: 2023
-// Version: 0.0.4
+// Version: 0.0.5
 
 import { readFileSync, existsSync } from 'fs'
 import { DecoratorNotFoundException } from "./errors.mjs"
