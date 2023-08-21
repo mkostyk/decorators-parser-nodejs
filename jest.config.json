@@ -1,0 +1,8 @@
+{
+    "testMatch": [
+      "**/__tests__/**/*.mjs"
+    ],
+    "transform": {},
+    "collectCoverage": true,
+    "coverageDirectory": "coverage"
+}

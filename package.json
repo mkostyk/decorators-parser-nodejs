@@ -1,0 +1,23 @@
+{
+  "name": "decorators-parser-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "directories": {
+    "test": "__tests__"
+  },
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.config.json"
+  },
+  "jest": {
+    "collectCoverage":true
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.6.2",
+    "pretty-format": "^29.6.2"
+  }
+}
