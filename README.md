@@ -16,6 +16,11 @@ function parse(file, data)
 ```
 Parses given string or file and returns a list of dictionaries. If both `file` and `data` are provided, `data` will be ignored.
 
+#### constructor
+```js
+function constructor(constraints={}, ignored=[])
+```
+Creates a new Parser object. `constraints` is a dictionary of constraints for decorators. `ignored` is a list of decorators to ignore.
 
 ### Decorators format
 Decorator name can be any string that does not contain '@' character. If decorator
@@ -64,7 +69,7 @@ Who is Lincoln?
 What is the purpose of the Bill of Rights?
 ```
 
-run.py:
+run.js:
 ```js
 import { Parser } from "decorators-parser-js"
 let task_parser = new Parser()
@@ -98,7 +103,7 @@ Who is Lincoln?
 What is the purpose of the Bill of Rights?
 ```
 
-run.py:
+run.js:
 ```js
 import { Parser } from "decorators-parser-js"
 let task_parser = new Parser()
@@ -128,12 +133,12 @@ is a JavaScript dictionary in a format shown below (if format of the given dicti
 let example = {
     'question': 
     {
-        'regex': '([^@]+)',
+        'regex': '^([^@]+)$',
         'description': 'any non-empty string without @'
     },
     'correct':
     {
-        'regex': '([1-4])',
+        'regex': '^([1-4])$',
         'description': 'any number from 1 to 4'
     }
 }
@@ -147,7 +152,7 @@ task.txt:
 @correct(11)
 ```
 
-run.py:
+run.js:
 ```js
 import { Parser } from "decorators-parser-js"
 let task_parser = new Parser(example)
@@ -156,7 +161,7 @@ console.log(task_parser.parse('task.txt'))
 
 Will result in the following output:
 ```
-errors.InvalidValueException: Line 1: 'correct' should be any number from 1 to 4 but is 11
+InvalidValueException [Error]: 'correct' should be any number from 1 to 4 but is 11
 ```
 
 #### Example 2
@@ -186,7 +191,7 @@ task.txt:
 Some long question with @ref in it
 ```
 
-run.py:
+run.js:
 ```js
 import { Parser } from "decorators-parser-js"
 let task_parser = new Parser({}, ["ref"])

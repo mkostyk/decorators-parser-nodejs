@@ -1,9 +1,10 @@
 // Author: Michał Kostyk for Smartschool Inc.
 // Date: 2023
-// Version: 0.0.5
+// Version: 0.0.6
 
 import { readFileSync, existsSync } from 'fs'
-import { DecoratorNotFoundException } from "./errors.mjs"
+import { DecoratorNotFoundException, InvalidConstraintException, DuplicateDecoratorException,
+    InvalidDecoratorException, InvalidValueException, NoDataException } from "./errors.mjs"
 
 const MAGIC_CHAR = '\x07'
 
@@ -12,7 +13,7 @@ export class Parser {
         for (const [key, value] of Object.entries(constraints)) {
             // Check if value has regex and description properties
             if (!value.hasOwnProperty('regex') || !value.hasOwnProperty('description')) {
-                throw new Error(`Invalid constraint for key '${key}'`);
+                throw new InvalidConstraintException(`Invalid constraint for key '${key}'`);
             }
         }
 
@@ -101,7 +102,7 @@ export class Parser {
         // Check if decorator is valid
         // TODO - better regex for this
         if (decorator.match(/(@[^\n]*@[^\n]*$)/m)) {
-            throw new Error('Invalid decorator');
+            throw new InvalidDecoratorException('Invalid decorator');
         }
         
         let is_global = decorator.match(/@global\-[^\n]*/m) ? true : false;
@@ -129,7 +130,7 @@ export class Parser {
         }
 
         if (name in result) {
-            throw new Error(`Duplicate decorator '${name}'`)
+            throw new DuplicateDecoratorException(`Duplicate decorator '${name}'`)
         }
 
         if (name in this.constraints) {
@@ -137,7 +138,7 @@ export class Parser {
 
             // Value must be a full match
             if (!value.match(this.constraints[name]['regex'])) {
-                throw new Error(`'${name}' should be ${description} but is ${value}`)
+                throw new InvalidValueException(`'${name}' should be ${description} but is ${value}`)
             }
         }
 
@@ -169,12 +170,12 @@ export class Parser {
 
     parse(file, data) {
         if (file == undefined && data == undefined) {
-            throw new Error('Either file or data must be provided')
+            throw new NoDataException('Either file or data must be provided')
         }
 
         if (file != undefined) {
             if (!existsSync(file)) {
-                throw new Error(`File '${file}' does not exist`)
+                throw new NoDataException(`File '${file}' does not exist`)
             }
 
             data = readFileSync(file, 'utf8')
