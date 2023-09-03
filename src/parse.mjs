@@ -1,6 +1,6 @@
 // Author: Michał Kostyk for Smartschool Inc.
 // Date: 2023
-// Version: 0.0.6
+// Version: 0.0.7
 
 import { readFileSync, existsSync } from 'fs'
 import { DecoratorNotFoundException, InvalidConstraintException, DuplicateDecoratorException,
@@ -30,7 +30,8 @@ export class Parser {
                 for (let ignored_decorator of ignored_decorators) {
                     let decor = ignored_decorator[0];
                     let decor_no_first = decor.substring(1);
-
+                    
+                    // Replace currently analyzed decorator.
                     data = data.replace(decor, MAGIC_CHAR + decor_no_first);
                 }
             }
@@ -41,7 +42,7 @@ export class Parser {
 
     restore_ignored(result) {
         for (const [key, value] of Object.entries(result)) {
-            result[key] = result[key].replace(new RegExp(MAGIC_CHAR, 'g'), '@');
+            result[key] = result[key].replaceAll(new RegExp(MAGIC_CHAR, 'g'), '@');
         }
 
         return result;
@@ -61,6 +62,7 @@ export class Parser {
 
         for (let gd of global_decorators) {
             let decor = gd[0];
+            // Replace currently analyzed decorator.
             data = data.replace(decor, '');
             gd_text += (decor + "\n");
         }

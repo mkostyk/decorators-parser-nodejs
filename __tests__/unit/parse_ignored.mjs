@@ -1,7 +1,7 @@
 import { Parser } from "../../src/parse";
 import { readFileSync } from 'fs'
 
-const test_file = "__tests__/test.tex"
+const test_file = "__tests__/test_ignored.tex"
 
 describe("Parsing ignored tags tests", () => {
     let data = readFileSync(test_file, 'utf8');
@@ -17,7 +17,7 @@ describe("Parsing ignored tags tests", () => {
         let parser = new Parser({}, ["line-ref"]);
 
         let ignored_data = parser.parse_ignored(data);
-        expect(ignored_data).toStrictEqual(data.replace("@line-ref", "\x07line-ref"));
+        expect(ignored_data).toStrictEqual(data.replaceAll("@line-ref", "\x07line-ref"));
     })
 
     test("Ignored tag not in data", () => {

@@ -1,7 +1,4 @@
 import { Parser } from "../../src/parse";
-import { readFileSync } from 'fs'
-
-const test_file = "__tests__/test.tex"
 
 describe("Restoring ignored tags tests", () => {
     let data = {
