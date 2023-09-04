@@ -1,6 +1,6 @@
 // Author: Michał Kostyk for Smartschool Inc.
 // Date: 2023
-// Version: 0.0.7
+// Version: 0.0.8
 
 import { readFileSync, existsSync } from 'fs'
 import { DecoratorNotFoundException, InvalidConstraintException, DuplicateDecoratorException,
@@ -19,6 +19,11 @@ export class Parser {
 
         this.constraints = constraints;
         this.ignored = ignored;
+    }
+
+    // For Windows users
+    parse_endlines(data) {
+        return data.replaceAll('\r\n', '\n')
     }
 
     parse_ignored(data) {
@@ -186,6 +191,7 @@ export class Parser {
 
         // Save original data for error line messages
         this.original_data = data
+        data = this.parse_endlines(data)
         data = this.parse_ignored(data)
 
         let global_parsed = this.parse_global(data);

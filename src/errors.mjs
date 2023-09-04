@@ -1,6 +1,6 @@
 // Author: Michał Kostyk for Smartschool Inc.
 // Date: 2023
-// Version: 0.0.7
+// Version: 0.0.8
 
 const FAIL = '\x1b[91m'
 const ENDC = '\x1b[0m'
